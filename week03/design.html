@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WDD 131 - Place Page for Static Weather Example">
+    <meta name="author" content="Kamohelo Godfrey Mejaele">
+    <title>Design Principles</title>
+    <link rel="stylesheet" href="styles/place.css">
+    <link rel="stylesheet" href="styles/design.css">
+</head>
+
+<body>
+    <header>
+        <h1>Web Design Principles</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="responsive-images.html">Responsive Images</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2 class="visually-hidden">Featured Image</h2>
+            <picture>
+                <source srcset="images/place-large.webp" media="(min-width: 800px)">
+                <img src="images/place-small.webp" alt="Scenic view of my favorite place" loading="lazy" width="1000"
+                    height="600">
+            </picture>
+        </section>
+
+        <section class="principles">
+            <h2>Proximity</h2>
+            <p>Related items are grouped together to enhance readability. This principle helps users quickly associate
+                content.</p>
+        </section>
+
+        <section class="principles">
+            <h2>Alignment</h2>
+            <p>All elements are visually connected through alignment. This ensures consistency and order in the layout.
+            </p>
+        </section>
+
+        <section class="principles">
+            <h2>Repetition</h2>
+            <p>Consistent styling (colors, fonts, spacing) throughout the site reinforces the visual identity and
+                usability.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Kamohelo Godfrey Mejaele</p>
+        <p>Last Modified: <span id="lastModified"></span></p>
+    </footer>
+
+    <script src="scripts/place.js"></script>
+</body>
+
+</html>
