@@ -1,159 +1,64 @@
- /* Base Reset */
+ :root {
+     --main-bg: #f0f8ff;
+     --accent-color: #003366;
+     --text-color: #333;
+ }
+
  * {
-     margin: 0;
-     padding: 0;
      box-sizing: border-box;
  }
 
- html {
-     scroll-behavior: smooth;
- }
-
  body {
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     line-height: 1.6;
-     background-color: #f9f9f9;
-     color: #333;
+     font-family: 'Roboto', sans-serif;
+     background-color: var(--main-bg);
+     color: var(--text-color);
+     margin: 0;
+     padding: 0;
  }
 
- /* Header */
  header {
-     background-color: #004d7a;
-     color: #fff;
-     padding: 1rem 2rem;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
+     background-color: var(--accent-color);
+     color: white;
+     padding: 1rem;
      text-align: center;
- }
-
- header h1 {
-     font-size: 2rem;
-     margin-bottom: 0.5rem;
- }
-
- nav {
-     display: flex;
-     gap: 1.5rem;
-     flex-wrap: wrap;
  }
 
  nav a {
-     color: #ffffff;
+     margin: 0 1rem;
+     color: white;
      text-decoration: none;
-     font-weight: 500;
-     transition: color 0.3s ease;
  }
 
- nav a:hover,
- nav a:focus {
-     color: #ffcc00;
- }
-
- /* Main */
- main {
-     padding: 2rem;
-     max-width: 1000px;
-     margin: auto;
- }
-
- /* Hero Section */
  .hero {
-     display: grid;
-     place-items: center;
-     margin-bottom: 2rem;
-     border-radius: 10px;
-     overflow: hidden;
-     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 1rem;
  }
 
- .hero img {
-     width: 100%;
+ img {
+     max-width: 100%;
      height: auto;
-     display: block;
-     border-radius: 8px;
  }
 
- /* Description Section */
  .description {
-     background-color: #ffffff;
-     border-left: 6px solid #004d7a;
-     padding: 1.5rem;
-     border-radius: 8px;
-     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+     padding: 2rem;
  }
 
- .description h2 {
-     font-size: 1.75rem;
-     margin-bottom: 1rem;
-     color: #004d7a;
+ ul.bulletin li::before {
+     content: '✔ ';
+     color: green;
  }
 
- .description p {
-     font-size: 1rem;
-     margin-bottom: 1rem;
- }
-
- .bulletin {
-     list-style: none;
-     padding-left: 1rem;
- }
-
- .bulletin li {
-     margin-bottom: 0.75rem;
-     font-size: 1.05rem;
-     padding-left: 1.2rem;
-     position: relative;
- }
-
- .bulletin li::before {
-     content: '✔️';
-     position: absolute;
-     left: 0;
-     color: #00796b;
- }
-
- /* Footer */
  footer {
-     background-color: #004d7a;
-     color: #ffffff;
-     padding: 1rem 2rem;
      text-align: center;
-     margin-top: 3rem;
-     font-size: 0.9rem;
+     padding: 1rem;
+     background-color: #eee;
  }
 
- /* Accessibility */
- .visually-hidden {
-     position: absolute;
-     width: 1px;
-     height: 1px;
-     margin: -1px;
-     padding: 0;
-     border: 0;
-     overflow: hidden;
-     clip: rect(0 0 0 0);
- }
-
- /* Responsive Adjustments */
- @media (max-width: 600px) {
-     header h1 {
-         font-size: 1.5rem;
-     }
-
-     nav {
-         justify-content: center;
-     }
-
-     .description {
-         padding: 1rem;
-     }
-
-     .description h2 {
-         font-size: 1.5rem;
-     }
-
-     .bulletin li {
-         font-size: 1rem;
-     }
+ footer::after {
+     content: " 🌍 Visit again soon!";
+     display: block;
+     color: var(--accent-color);
+     font-weight: bold;
  }

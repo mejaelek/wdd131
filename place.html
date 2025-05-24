@@ -2,43 +2,47 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="WDD 131 - Place Page for Static Weather Example">
-    <meta name="author" content="Kamohelo Godfrey Mejaele">
-    <title>My Favorite Place</title>
-    <link rel="stylesheet" href="styles/place.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="WDD 131 - Place Page for Static Weather Example" />
+    <meta name="author" content="Kamohelo Godfrey Mejaele" />
+    <title>Cape Town City</title>
+
+    <!-- Google Fonts: Use <link> instead of @import -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/place.css" />
 </head>
 
 <body>
     <header>
         <h1>Cape Town City</h1>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Gallery</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <a href="index.html">Home</a>
+            <a href="design.html">Design</a>
+            <a href="responsive-images.html">Responsive Images</a>
         </nav>
     </header>
 
     <main>
         <section class="hero">
-            <img class="hero-image" src="images/hero-small.webp" srcset="
-          images/hero-small.webp 600w,
-          images/hero-medium.webp 900w,
-          images/hero-large.webp 1200w" sizes="(max-width: 600px) 600px,
-               (max-width: 900px) 900px,
-               1200px" alt="Scenic view of the location" loading="lazy" width="1200" height="675">
+            <h2 class="visually-hidden">Hero Image</h2>
+            <picture>
+                <source srcset="images/hero-large.webp" media="(min-width: 800px)" />
+                <img src="images/hero-small.webp" alt="Cape Town scenic view" loading="lazy" width="1000"
+                    height="600" />
+            </picture>
         </section>
 
         <section class="description">
             <h2>Why I Love This Place</h2>
             <p>This place holds a special place in my heart because of its stunning natural beauty, peaceful atmosphere,
-                and unforgettable memories I’ve made here.</p>
+                and unforgettable memories.</p>
             <ul class="bulletin">
                 <li>🌄 Breathtaking landscapes and mountain views</li>
                 <li>🏞️ Serene hiking trails surrounded by nature</li>
-                <li>🌅 Unforgettable sunsets over the lake</li>
+                <li>🌅 Unforgettable sunsets over the coast</li>
                 <li>🌿 A peaceful escape from daily life</li>
                 <li>📸 A perfect spot for photography and reflection</li>
             </ul>
@@ -46,12 +50,12 @@
     </main>
 
     <footer>
-        &copy; <span id="year"></span> Kamohelo Godfrey Mejaele | WDD 131 Project
+        <p>&copy; <span id="year"></span> Kamohelo Godfrey Mejaele</p>
+        <p>Last Modified: <span id="lastModified"></span></p>
     </footer>
 
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+    <!-- JS -->
+    <script src="scripts/place.js" defer></script>
 </body>
 
 </html>
