@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Filtered list of LDS temples with interactive filters and layout toggles.">
+    <title>LDS Temples</title>
+    <link rel="stylesheet" href="styles/filtered-temples.css">
+    <link rel="preload" href="scripts/filtered-temples.js" as="script">
+</head>
+
+<body>
+    <header>
+        <h1>Filtered Temple Album</h1>
+        <nav class="filter-buttons">
+            <button data-filter="all">All</button>
+            <button data-filter="utah">Utah</button>
+            <button data-filter="non-utah">Non-Utah</button>
+            <button data-filter="old">Old (&lt;1900)</button>
+            <button data-filter="new">New (2000+)</button>
+        </nav>
+
+        <div class="view-toggle">
+            <button id="grid-view" aria-label="Grid view">Large</button>
+            <button id="list-view" aria-label="List view">Small</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="temples-container" class="temples-grid"></section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Kamohelo Godfrey Mejaele. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts/filtered-temples.js" type="module"></script>
+</body>
+
+</html>
