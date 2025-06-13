@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Confirmation</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            color: #27ae60;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        /* Main content */
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .confirmation-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .success-message {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .success-message h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-message p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .review-summary {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9ff;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .review-summary h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        #reviewDetails {
+            font-size: 1rem;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e0e6ed;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #2c3e50;
+            flex: 1;
+        }
+
+        .detail-value {
+            flex: 2;
+            text-align: right;
+            color: #555;
+        }
+
+        .counter-display {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .counter-display h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .counter-display p {
+            font-size: 1.1rem;
+        }
+
+        #reviewCount {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #ffd700;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn.secondary {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+        }
+
+        .btn.secondary:hover {
+            box-shadow: 0 10px 25px rgba(149, 165, 166, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .confirmation-container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            .success-message h2 {
+                font-size: 1.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .detail-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+
+            .detail-value {
+                text-align: left;
+            }
+        }
+
+        /* Animation for success message */
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-message {
+            animation: slideInFromTop 0.5s ease-out;
+        }
+
+        /* Star display styles */
+        .star-rating {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .feature-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Review Submitted Successfully!</h1>
+        <p>Thank you for your feedback</p>
+    </header>
+
+    <main>
+        <div class="confirmation-container">
+            <div class="success-message">
+                <h2>✓ Your review has been received</h2>
+                <p>We appreciate you taking the time to share your experience with our product.</p>
+            </div>
+
+            <div class="review-summary">
+                <h3>Review Summary:</h3>
+                <div id="reviewDetails">
+                    <!-- Review details will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="counter-display">
+                <h3>Review Counter</h3>
+                <p>You have completed <span id="reviewCount">0</span> review(s) on this device.</p>
+            </div>
+
+            <div class="action-buttons">
+                <a href="form.html" class="btn">Submit Another Review</a>
+                <a href="#" class="btn secondary">Return to Homepage</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Product Review System. All rights reserved.</p>
+        <p>Contact us at: reviews@company.com | Phone: (555) 123-4567</p>
+    </footer>
+
+    <script>
+        // Product array (matching the form)
+        const products = [
+            { id: 1, name: "Wireless Bluetooth Headphones" },
+            { id: 2, name: "Smart Home Security Camera" },
+            { id: 3, name: "Portable Phone Charger" },
+            { id: 4, name: "LED Desk Lamp" },
+            { id: 5, name: "Wireless Mouse" },
+            { id: 6, name: "USB-C Hub" },
+            { id: 7, name: "Bluetooth Speaker" },
+            { id: 8, name: "Laptop Stand" },
+            { id: 9, name: "Wireless Keyboard" },
+            { id: 10, name: "Monitor Screen Protector" }
+        ];
+
+        // Function to get product name by ID
+        function getProductName(productId) {
+            const product = products.find(p => p.id == productId);
+            return product ? product.name : 'Unknown Product';
+        }
+
+        // Function to generate star display
+        function generateStars(rating) {
+            const stars = '⭐'.repeat(rating);
+            return `<span class="star-rating">${stars}</span> (${rating}/5)`;
+        }
+
+        // Function to display review details
+        function displayReviewDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const reviewDetails = document.getElementById('reviewDetails');
+
+            // Get form data from URL parameters
+            const productId = urlParams.get('productName');
+            const rating = urlParams.get('rating');
+            const installDate = urlParams.get('installDate');
+            const features = urlParams.getAll('features');
+            const writtenReview = urlParams.get('writtenReview');
+            const userName = urlParams.get('userName');
+
+            // Create review summary HTML
+            let detailsHTML = '';
+
+            if (productId) {
+                detailsHTML += `
+                    <div class="detail-item">
+                        <span class="detail-label">Product:</span>
+                        <span class="detail-value">${getProductName(productId)}</span>
+                    </div>
+                `;
+            }
+
+            if (rating) {
+                detailsHTML += `
+                    <div class="detail-item">
+                        <span class="detail-label">Rating:</span>
+                        <span class="detail-value">${generateStars(rating)}</span>
+                    </div>
+                `;
+            }
+
+            if (installDate) {
+                const formattedDate = new Date(installDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                detailsHTML += `
+                    <div class="detail-item">
+                        <span class="detail-label">Installation Date:</span>
+                        <span class="detail-value">${formattedDate}</span>
+                    </div>
+                `;
+            }
+
+            if (features && features.length > 0) {
+                const featureTags = features.map(feature =>
+                    `<span class="feature-tag">${feature}</span>`
+                ).join('');
+                detailsHTML += `
+                    <div class="detail-item">
+                        <span class="detail-label">Useful Features:</span>
+                        <div class="detail-value features-list">${featureTags}</div>
+                    </div>
+                `;
+            }
+
+            if (writtenReview && writtenReview.trim()) {
+                detailsHTML += `
+                    <div class="detail-item">
+                        <span class="detail-label">Written Review:</span>
+                        <span class="detail-value">"${writtenReview}"</span>
+                    </div>
+                `;
+            }
+
+            if (userName && userName.trim()) {
+                detailsHTML += `
+                    <div class="detail-item">
+                        <span class="detail-label">Reviewer:</span>
+                        <span class="detail-value">${userName}</span>
+                    </div>
+                `;
+            }
+
+            if (detailsHTML === '') {
+                detailsHTML = '<p>No review details available.</p>';
+            }
+
+            reviewDetails.innerHTML = detailsHTML;
+        }
+
+        // Function to update review counter using localStorage
+        function updateReviewCounter() {
+            // Get current count from localStorage
+            let reviewCount = parseInt(localStorage.getItem('reviewCount') || '0');
+
+            // Increment the count
+            reviewCount++;
+
+            // Save back to localStorage
+            localStorage.setItem('reviewCount', reviewCount.toString());
+
+            // Update the display
+            document.getElementById('reviewCount').textContent = reviewCount;
+        }
+
+        // Initialize page when loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            displayReviewDetails();
+            updateReviewCounter();
+        });
+    </script>
+</body>
+
+</html>
