@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Nature's Canvas | Photography Portfolio</title>
+    <meta name="description"
+        content="Explore stunning nature photography in our gallery featuring landscapes, mountains, forests and more">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="gallery.js" as="script">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-spinner"></div>
+    </div>
+
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav" aria-label="Main">
+                <div class="logo">
+                    <a href="index.html" aria-label="Nature's Canvas Home">
+                        <h1>Nature's Canvas</h1>
+                    </a>
+                </div>
+
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"
+                    aria-controls="primary-navigation">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+
+                <ul id="primary-navigation" class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="gallery.html" class="nav-link active" aria-current="page">Gallery</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="references.html" class="nav-link">References</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Gallery Hero -->
+        <section class="gallery-hero" aria-labelledby="gallery-heading">
+            <div class="container">
+                <h1 id="gallery-heading">Photography Gallery</h1>
+                <p>Discover the world through my lens</p>
+            </div>
+        </section>
+
+        <!-- Gallery Filters -->
+        <div class="gallery-controls">
+            <div class="container">
+                <h2 class="sr-only">Gallery Controls</h2>
+                <div class="filter-container">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Photos</button>
+                        <button class="filter-btn" data-filter="mountains">Mountains</button>
+                        <button class="filter-btn" data-filter="ocean">Ocean</button>
+                        <button class="filter-btn" data-filter="forest">Forest</button>
+                        <button class="filter-btn" data-filter="desert">Desert</button>
+                        <button class="filter-btn" data-filter="lake">Lakes</button>
+                    </div>
+
+                    <div class="search-container">
+                        <label for="search-input" class="sr-only">Search photos</label>
+                        <input type="text" id="search-input" placeholder="Search photos..." class="search-input">
+                        <button id="search-btn" class="search-btn" aria-label="Search">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                aria-hidden="true">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <section class="gallery-section" aria-labelledby="gallery-grid-heading">
+            <div class="container">
+                <h2 id="gallery-grid-heading" class="sr-only">Photo Gallery</h2>
+                <div class="gallery-stats">
+                    <p id="gallery-count">Displaying 12 photos</p>
+                    <div class="view-options">
+                        <button id="grid-view" class="view-btn active" aria-label="Grid view">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                aria-hidden="true">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </button>
+                        <button id="list-view" class="view-btn" aria-label="List view">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                aria-hidden="true">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="gallery-grid" class="masonry-grid"></div>
+
+                <div id="no-results" class="no-results" aria-live="polite" hidden>
+                    <h3>No photos found</h3>
+                    <p>Try adjusting your search or filter criteria.</p>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="load-more-container">
+                    <button id="load-more" class="load-more-btn">Load More Photos</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Favorites Section -->
+        <section class="favorites-section" aria-labelledby="favorites-heading">
+            <div class="container">
+                <h2 id="favorites-heading">Your Favorites</h2>
+                <div id="favorites-grid" class="favorites-grid"></div>
+                <div id="no-favorites" class="no-favorites" aria-live="polite">
+                    <p>You haven't added any favorites yet. Click the heart icon on any photo to add it to your
+                        favorites!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Nature's Canvas</h3>
+                    <p>Capturing the world's natural beauty, one photograph at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="references.html">References</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                aria-hidden="true">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                aria-hidden="true">
+                                <path
+                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2025</span> Nature's Canvas. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="images.js"></script>
+    <script src="script.js" defer></script>
+    <script src="gallery.js" defer></script>
+
+    <script>
+        // Simple preloader removal and year update
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => preloader.remove(), 500);
+
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+
+</html>

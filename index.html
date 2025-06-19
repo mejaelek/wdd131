@@ -4,75 +4,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site plan for Eco Trails Adventure final project.">
-    <title>Eco Trails Adventure Site Plan</title>
-    <link rel="stylesheet" href="styles/siteplan.css">
+    <title>Nature's Canvas - Digital Photography Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <h1>Eco Trails Adventure</h1>
-        <p>Your guide to nature's best paths</p>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header with Navigation -->
+    <header class="header">
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>Nature's Canvas</h1>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-menu" role="menubar">
+                    <li role="none"><a href="index.html" class="nav-link active" role="menuitem">Home</a></li>
+                    <li role="none"><a href="gallery.html" class="nav-link" role="menuitem">Gallery</a></li>
+                    <li role="none"><a href="contact.html" class="nav-link" role="menuitem">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <section>
-            <h2>Site Name</h2>
-            <p><strong>Eco Trails Adventure</strong> - This name captures the essence of an environmentally focused
-                hiking and outdoor adventure guide. It is memorable, relevant to eco-tourism, and brandable. Optional
-                domain availability: <code>ecotrails.org</code>.</p>
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <h2 id="hero-title" class="hero-title">Capturing Nature's Masterpieces</h2>
+                <p class="hero-subtitle">Explore breathtaking landscapes through the lens of professional photography
+                </p>
+                <button class="cta-button" onclick="scrollToSection('featured-work')">View Featured Work</button>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                    alt="Majestic mountain landscape with misty peaks" loading="lazy">
+            </div>
         </section>
 
-        <section>
-            <h2>Site Purpose</h2>
-            <p>The website offers a platform for outdoor enthusiasts to discover and book eco-friendly trail
-                experiences, read detailed trail information, and connect with guides and fellow hikers. It promotes
-                responsible travel and sustainability through curated trails and educational content.</p>
-        </section>
-
-        <section>
-            <h2>Scenarios</h2>
-            <ul>
-                <li>What are the most beginner-friendly eco-trails in my area?</li>
-                <li>How do I book a guided hike for my group?</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Color Schema</h2>
-            <ul>
-                <li><strong>Forest Green (#2F5233):</strong> Used for headers and call-to-action buttons.</li>
-                <li><strong>Earthy Beige (#F5F0E1):</strong> Background color for content sections.</li>
-                <li><strong>Sky Blue (#87BFFF):</strong> Accent color for links and highlights.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Typography</h2>
-            <ul>
-                <li><strong>Heading Font:</strong> "Roboto Slab", serif – used for all headings and titles.</li>
-                <li><strong>Body Font:</strong> "Open Sans", sans-serif – used for paragraphs and UI labels.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Wireframes</h2>
-            <div class="wireframes">
-                <div>
-                    <h3>Mobile View</h3>
-                    <img src="images/wireframe-mobile.jpg" alt="Mobile wireframe layout">
+        <!-- Featured Work Section -->
+        <section id="featured-work" class="featured-work" aria-labelledby="featured-title">
+            <div class="container">
+                <h2 id="featured-title" class="section-title">Featured Photography</h2>
+                <div class="featured-grid" id="featured-gallery">
+                    <!-- Images will be loaded dynamically via JavaScript -->
                 </div>
-                <div>
-                    <h3>Desktop View</h3>
-                    <img src="images/wireframe-desktop.jpg" alt="Desktop wireframe layout">
+                <div class="view-more">
+                    <a href="gallery.html" class="btn-secondary">View Complete Gallery</a>
                 </div>
+            </div>
+        </section>
+
+        <!-- Photography Stats -->
+        <section class="stats" aria-labelledby="stats-title">
+            <div class="container">
+                <h2 id="stats-title" class="section-title">Photography Journey</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="150">0</div>
+                        <div class="stat-label">Locations Captured</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="2500">0</div>
+                        <div class="stat-label">Photos Taken</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="8">0</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="25">0</div>
+                        <div class="stat-label">Awards Won</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" aria-labelledby="about-title">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 id="about-title" class="section-title">About the Photographer</h2>
+                        <p>Welcome to Nature's Canvas, where every photograph tells a story of our planet's incredible
+                            beauty. I'm a landscape photographer passionate about capturing the raw, untouched moments
+                            that nature offers.</p>
+                        <p>My journey began eight years ago with a simple desire to preserve the breathtaking vistas I
+                            encountered during my travels. Today, I continue to explore remote locations, seeking that
+                            perfect interplay of light, shadow, and natural wonder.</p>
+                        <p>Each image in my collection represents hours of patient waiting, careful composition, and
+                            deep respect for the environment. I believe photography is not just about capturing what we
+                            see, but revealing what we feel.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                            alt="Serene forest path with dappled sunlight" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup -->
+        <section class="newsletter" aria-labelledby="newsletter-title">
+            <div class="container">
+                <h2 id="newsletter-title" class="section-title">Stay Connected</h2>
+                <p>Subscribe to receive updates on new photography collections and upcoming exhibitions.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <div class="form-group">
+                        <label for="email" class="sr-only">Email address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn-primary">Subscribe</button>
+                    </div>
+                </form>
+                <div id="newsletter-message" class="form-message" role="alert" aria-live="polite"></div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Eco Trails Adventure</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Nature's Canvas</h3>
+                    <p>Capturing the world's natural beauty, one photograph at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="references.html">References</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">Instagram</a>
+                        <a href="#" aria-label="Twitter">Twitter</a>
+                        <a href="#" aria-label="Facebook">Facebook</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nature's Canvas. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
